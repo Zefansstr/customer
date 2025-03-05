@@ -52,7 +52,7 @@ else:
     df['Net Amount'] = df['Deposit Amount'] - df['Withdraw Amount']
 
     # Menghitung Profit (Profit = Net Amount jika positif, jika tidak 0)
-    df['Profit'] = df['Net Amount'].apply(lambda x: x if x > 0 else 0)
+    df['Profit'] = df['Deposit Amount'] - df['Withdraw Amount']
 
     # Menentukan kategori berdasarkan batas Deposit Amount yang ditentukan
     def categorize(amount):
@@ -82,7 +82,7 @@ else:
     df['High Withdraw'] = df['Withdraw Amount'] > (df['Deposit Amount'] * 0.5)
 
     # Menentukan VIP & High Risk Customers
-    df['VIP'] = df['Deposit Amount'] > 20000
+    df['VIP'] = df['Deposit Amount'] > 10000
     df['High Risk'] = (df['Withdraw Amount'] / df['Deposit Amount']) > 0.9
 
     # Pastikan kolom sesuai dengan nama di dataset
